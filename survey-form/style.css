@@ -1,0 +1,110 @@
+
+body {
+  background-color: aquamarine;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+.form-wrapper {
+  min-width: 600px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 16px;
+  background-color: #fefefe;
+  border-radius: 4px;
+}
+
+#description {
+  text-align: center;
+}
+
+#survey-form {
+  margin-top: 20px;
+}
+
+.input-row {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  justify-content: space-around;
+  min-height: 35px;
+  margin: 6px;
+}
+
+.input-row > label {
+  width: 48%;
+  text-align: right;
+  vertical-align: middle;
+  padding: 8px;
+  margin-right: 4px;
+}
+
+.input-wrapper {
+  margin-left: 4px;
+  width: 48%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.input-wrapper > ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px;
+}
+
+li {
+  margin: 3px;
+}
+
+li input {
+  margin-right: 10px;
+  vertical-align: text-top;
+}
+
+.description {
+  text-align: center;
+}
+
+#submit {
+  display: block;
+  margin: 15px auto 5px;
+  padding: 0 8px;
+  font-size: 18px;
+  color: #eee;
+  border: none;
+  outline: 0;
+  height: 2em;
+  background-color: hsl(229, 87%, 61%);
+  border-radius: 3px;
+}
+#submit:hover {
+  cursor: pointer;
+  background-color: hsl(229, 88%, 53%);
+}
+
+.input-field {
+  max-width: 200px;
+  padding: 0 6px;
+  width: 75%;
+  height: 30px;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  background-color: white;
+}
+
+textarea.input-field {
+  max-width: 50%;
+  min-width: 350px;
+  margin: 0 auto;
+  display: none;
+/*  display: block;*/
+  resize: none;
+  height: auto;
+}

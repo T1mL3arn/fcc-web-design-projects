@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Form - freeCodeCamp web design project</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <h1 id="title">Желаемый участок</h1>
+  
+   <div class="form-wrapper">
+    <p id="description" class="description">Расскажите нам, какой участок Вы хотите, и мы подберем наиболее подходящий.</p>
+    
+    <form action="" id="survey-form">
+      
+      <div class="input-row">
+        <label for="dropdown" id="label-dropdown">Желаемый район/поселок: </label>
+        <div class="input-wrapper">
+          <select type="dropdown" class="input-field" required id="dropdown">
+            <option value="" selected disabled>-- Выберите район --</option>
+            <option value="d-small-airport">р-н. Малый аэропорт</option>
+            <option value="w-malin">с. Малиновка</option>
+            <option value="w-smirnovka">с. Смирновка</option>
+            <option value="w-zori">пос. Зори</option>
+            <option value="d-east-road">р-н. Западное шоссе</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <label for="number" id="number-label">Площадь участка, кв. м.</label>
+        <div class="input-wrapper">
+          <input type="number" id="number" placeholder="Введите площадь" step="50" min="400" max="2000" value="400" class="input-field" required name="age">
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <label for="">Этажность дома</label>
+        <div class="input-wrapper">
+          <ul>
+            <li>
+              <label>
+                <input type="radio" checked value="not-important" name="floor-count">
+                Не важно
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" value="1" name="floor-count">
+                1 этаж
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" value="2" name="floor-count">
+                2 этажа
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" value="3" name="floor-count">
+                3 этажа
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <label for="">Дополнительно</label>
+        <div class="input-wrapper">
+          <ul>
+            <li><label><input type="checkbox" value="1" name="opt-garage">Гараж</label></li>
+            <li><label><input type="checkbox" value="1" name="opt-vapor-cabine">Баня</label></li>
+            <li><label><input type="checkbox" value="1" name="opt-garden">Благоустроенный участок</label></li>
+            <li><label><input type="checkbox" value="1" name="opt-internet">Интернет</label></li>
+            <li><label><input type="checkbox" value="1" name="opt-tv">ТВ</label></li>
+            <li><label><input type="checkbox" value="1" name="opt-other">Другое</label></li>
+          </ul>
+        </div>
+      </div>
+      
+      <textarea name="opt-custom" rows="4" class="input-field" maxlength="150" placeholder="Ваши предпочтения (не более 150 символов)" disabled ></textarea>
+      
+      <p class="description">Ваши контактные данные</p>
+      <div class="input-row">
+        <label for="name" id="name-label">Как к Вам обращаться: </label>
+        <div class="input-wrapper">
+          <input type="text" id="name" placeholder="Иванов Иван Иванович" required class="input-field" name="name">
+        </div>
+      </div>
+      
+      <p class="description">Электронная почта или телефон</p>
+      <div class="input-row">
+        <label for="email" id="email-label">Email: </label>
+        <div class="input-wrapper">
+          <input type="email" id="email" placeholder="ivan@example.ru" required maxlength="64" minlength="9" class="input-field" name="email">
+        </div>
+      </div>
+      
+      <div class="input-row">
+        <label for="tel" id="phone-label">Телефон: </label>
+        <div class="input-wrapper">
+          <input type="tel" id="tel" placeholder="11-22-33 или 8-911-111-22-33" class="input-field" required pattern="([0-9]{2}-?[0-9]{2}-?[0-9]{2})|(\d-?\d{3}-?\d{3}-?\d\d-?\d\d)" name="tel">
+        </div>
+      </div>
+      
+      <button id="submit" type="submit">Отправить заявку</button>
+      
+    </form>
+  </div>
+  
+  <script>
+    let info = console.info;
+    let otherCheckBox = document.querySelector('input[name="opt-other"]');
+    let switchCustomerWishesAreaAppearance = (e) => {
+      let area = document.querySelector('*[name="opt-custom"]');
+      if (otherCheckBox.checked) {
+        area.style.display = "block";
+        area.disabled = false;
+      } else {
+        area.style.removeProperty("display");
+        area.disabled = true;
+      }
+    };
+    
+    otherCheckBox.addEventListener('change', switchCustomerWishesAreaAppearance);
+    
+    let email = document.getElementById('email');
+    let tel = document.getElementById('tel');
+    let validateTelAndMail = (e) => {
+      if (!email.value && tel.value) {
+        email.required = false;
+        tel.required = true;
+      } else if (email.value && !tel.value) {
+        email.required = true;
+        tel.required = false;
+      } else if (!email.value && !tel.value) {
+        tel.required = email.required = true;
+      }
+    };
+    
+    email.addEventListener('change', validateTelAndMail);
+    tel.addEventListener('change', validateTelAndMail);
+    
+    validateTelAndMail();
+    switchCustomerWishesAreaAppearance();
+  </script>
+</body>
+</html>
